@@ -1,1 +1,161 @@
-/mnt/c/Users/rz-PC/.config/starship.toml
+### Color Palette
+#e6e6e6 white
+#3f4451 black
+#4f5666 fill
+#9a348e user
+#e05561 dir
+#8cc265 git
+#61afef version
+#d19a66 duration
+#33658a time
+format = """
+[╭─](fg:#4f5666)\
+[](fg:#9a348e)\
+$os\
+$username\
+[](fg:#9a348e bg:#e05561)\
+$directory\
+[](fg:#e05561 bg:#8cc265)\
+$git_branch\
+$git_status\
+[](fg:#8cc265 bg:#61afef)\
+$c\
+$golang\
+$haskell\
+$java\
+$nodejs\
+$ocaml\
+$python\
+$rust\
+$scala\
+[](fg:#61afef)\
+$fill\
+[](fg:#d19a66)\
+$cmd_duration\
+[](fg:#33658a bg:#d19a66)\
+$time\
+[](fg:#33658a)
+[╰─](fg:#4f5666) \
+"""
+
+
+# Adds a blank line to the start of the prompt
+add_newline = true
+
+# OS and username
+[os]
+disabled = false
+style = "fg:#e6e6e6 bg:#9a348e"
+
+[os.symbols]
+Windows = " "
+Ubuntu = " "
+SUSE = " "
+Raspbian = "󰐿 "
+Mint = "󰣭 "
+Macos = "󰀵 "
+Manjaro = " "
+Linux = "󰌽 "
+Gentoo = "󰣨 "
+Fedora = "󰣛 "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = "󰣇 "
+Artix = "󰣇 "
+CentOS = " "
+Debian = "󰣚 "
+Redhat = "󱄛 "
+RedHatEnterprise = "󱄛 "
+
+[username]
+show_always = true
+style_user = "fg:#e6e6e6 bg:#9a348e"
+style_root = "fg:#e6e6e6 bg:#9a348e"
+format = '[$user ]($style)'
+
+# Directory with substitutions
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+style = "fg:#e6e6e6 bg:#e05561"
+format = '[ $path ]($style)'
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
+
+# Git
+[git_branch]
+symbol = ""
+style = "fg:#3f4451 bg:#8cc265"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#3f4451 bg:#8cc265"
+format = '([$all_status$ahead_behind ]($style))'
+
+[fill]
+symbol = "·"
+style = "#4f5666"
+
+[cmd_duration]
+min_time = 1000
+style = "fg:#3f4451 bg:#d19a66"
+format = '[ $duration  ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658a"
+format = '[  $time]($style)'
+
+#
+# Individual support for languages
+#
+[c]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[nodejs]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[ocaml]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[python]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[rust]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "fg:#3f4451 bg:#61afef"
+format = '[ $symbol($version) ]($style)'
