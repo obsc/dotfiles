@@ -1,0 +1,46 @@
+#!/bin/zsh
+# Bootstrap file for Linux only
+if [[ "$(uname -s)" != "Linux" ]]; then
+    echo "Only Linux supported"
+    return 1
+fi
+
+# Clone antidote
+if [[ ! -d $ZDOTDIR/.antidote ]]; then
+    echo "Cloning antidote"
+    git clone https://github.com/mattmc3/antidote $ZDOTDIR/.antidote
+fi
+
+# Generate plugins file
+if [[ ! -f $ZDOTDIR/.zsh_plugins.txt ]]; then
+    echo "Generating antidote plugins file"
+    touch $ZDOTDIR/.zsh_plugins.txt
+fi
+
+# Install starship
+if ! command -v starship >/dev/null 2>&1; then
+    echo "Installing starship"
+    curl -sS https://starship.rs/install.sh | sh
+fi
+
+# Install fzf
+if [[ ! -d $ZDOTDIR/.fzf ]]; then
+    echo "Cloning fzf"
+    git clone --depth 1 https://github.com/junegunn/fzf.git $ZDOTDIR/.fzf
+fi
+if ! command -v fzf > /dev/null 2>&1; then
+    echo "Installing fzf"
+    $ZDOTDIR/.fzf/install --bin --xdg
+fi
+
+# Install lua for z.lua
+if ! command -v lua > /dev/null 2>&1; then
+    echo "Installing lua"
+    sudo apt install lua5.4
+fi
+
+# Install bat
+if ! command -v batcat > /dev/null 2>&1; then
+    echo "Installing bat"
+    sudo apt install bat
+fi
