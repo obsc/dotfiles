@@ -1,0 +1,1 @@
+/home/rz/.config/zsh/.zshenv
